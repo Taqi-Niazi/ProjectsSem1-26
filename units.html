@@ -44,14 +44,15 @@
     /* Container layout */
     .grid {
       display: flex;
-      flex-direction: column;
       gap: 1.5rem;
-      max-width: 40rem;
       margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     /* Card styling */
     .demo-card {
+      width: 600px;
       background-color: #ffffff;
       border: 2px solid #cbd5e1; /* PX: Sharp thin border */
       border-radius: 8px;
@@ -110,7 +111,7 @@
 
     /* Viewport Units Demo */
     .box-vw {
-      width: 50vw; /* Takes exactly 50% of screen width */
+      width: 30vw; /* Takes exactly 50% of screen width */
       background-color: #f3e8ff;
       border: 2px solid #a855f7;
       padding: 10px;
@@ -187,23 +188,24 @@
       </div>
     </div>
 
-    <!-- 5. Viewport Unit Demo -->
+    <!-- 5. Line Height Unit Demo -->
     <div class="demo-card">
-      <h3>5. Screen Relative Unit: vw (Viewport Width)</h3>
-      <div class="box-vw">
-        <strong>Width: 50vw</strong><br>
-        Takes up exactly 50% of the browser screen width. Try resizing your browser window to see this box shrink and grow automatically!
-      </div>
-    </div>
-
-    <!-- 6. Line Height Unit Demo -->
-    <div class="demo-card">
-      <h3>6. Line Height Relative Unit: lh</h3>
+      <h3>5. Line Height Relative Unit: lh</h3>
       <div class="box-lh">
         Text line-height is set to 35px.<br>
         <span class="lh-indicator">Height: 1lh</span> ← This badge height is set to <code>1lh</code>, making it automatically <strong>35px</strong> tall to match the line height!
       </div>
     </div>
+
+    <!-- 6. Viewport Unit Demo -->
+    <div class="demo-card">
+      <h3>6. Screen Relative Unit: vw (Viewport Width)</h3>
+      <div class="box-vw">
+        <strong>Width: 30vw</strong><br>
+        Takes up exactly 30% of the browser screen width. Try resizing your browser window to see this box shrink and grow automatically!
+      </div>
+    </div>
+
 
   </div>
 
