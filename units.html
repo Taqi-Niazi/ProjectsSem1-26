@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Units Explained Visual Guide</title>
+  <style>
+    /* ===================================================
+       1. ROOT SETUP (rem & rlh)
+       =================================================== */
+    :root {
+      font-size: 16px;   /* 1rem = 16px */
+      line-height: 1.5;  /* 1rlh = 24px (16px * 1.5) */
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      
+      /* VIEWPORT UNITS: Whole page setup */
+      min-height: 100vh; /* Takes 100% of screen height */
+      width: 100vw;      /* Takes 100% of screen width */
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 0.5rlh; /* Spacing equal to half root line-height */
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 2rlh;
+    }
+
+    /* Container layout */
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 40rem;
+      margin: 0 auto;
+    }
+
+    /* Card styling */
+    .demo-card {
+      background-color: #ffffff;
+      border: 2px solid #cbd5e1; /* PX: Sharp thin border */
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    /* ===================================================
+       2. SPECIFIC UNIT DEMONSTRATION BOXES
+       =================================================== */
+
+    /* PX Demo */
+    .box-px {
+      width: 300px; /* Absolute 300 pixels */
+      background-color: #fee2e2;
+      border: 2px solid #ef4444;
+      padding: 10px;
+    }
+
+    /* REM Demo */
+    .box-rem {
+      width: 20rem; /* 20 * 16px = 320px */
+      font-size: 1.25rem; /* 1.25 * 16px = 20px */
+      background-color: #dbeafe;
+      border: 2px solid #3b82f6;
+      padding: 1rem;
+    }
+
+    /* EM Demo */
+    .parent-em {
+      font-size: 20px; /* Parent font size */
+      background-color: #fef3c7;
+      border: 2px solid #f59e0b;
+      padding: 1em; /* 1 * 20px = 20px padding */
+    }
+
+    .child-em {
+      font-size: 0.8em; /* 0.8 * 20px = 16px font size */
+      margin-top: 0.5em; /* 0.5 * 16px = 8px margin */
+      background-color: #fffbeb;
+      padding: 0.5em;
+    }
+
+    /* Percentage Demo */
+    .parent-percent {
+      width: 100%;
+      background-color: #e2e8f0;
+      padding: 10px;
+    }
+
+    .child-percent {
+      width: 60%; /* 60% of parent's width */
+      background-color: #d1fae5;
+      border: 2px solid #10b981;
+      padding: 10px;
+    }
+
+    /* Viewport Units Demo */
+    .box-vw {
+      width: 50vw; /* Takes exactly 50% of screen width */
+      background-color: #f3e8ff;
+      border: 2px solid #a855f7;
+      padding: 10px;
+    }
+
+    /* Line Height Units Demo */
+    .box-lh {
+      font-size: 16px;
+      line-height: 35px; /* Explicit line-height = 35px */
+      background-color: #fce7f3;
+      border: 2px solid #ec4899;
+      padding: 10px;
+    }
+
+    .lh-indicator {
+      display: inline-block;
+      height: 1lh; /* Height is EXACTLY 1 line-height (35px) */
+      background-color: #ec4899;
+      color: white;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Units Live Demonstrator</h1>
+  <p class="subtitle">Root Font Size: 16px | Root Line Height: 24px (1.5)</p>
+
+  <div class="grid">
+
+    <!-- 1. PX Demo -->
+    <div class="demo-card">
+      <h3>1. Absolute Unit: px (Pixel)</h3>
+      <div class="box-px">
+        <strong>Width: 300px</strong><br>
+        This box is fixed at 300 pixels. It never changes size regardless of screen width or browser settings.
+      </div>
+    </div>
+
+    <!-- 2. REM Demo -->
+    <div class="demo-card">
+      <h3>2. Root Relative Unit: rem</h3>
+      <div class="box-rem">
+        <strong>Width: 20rem | Font-Size: 1.25rem</strong><br>
+        Calculated from <code>html</code> font-size (16px):<br>
+        • Width = 20 × 16px = <strong>320px</strong><br>
+        • Font Size = 1.25 × 16px = <strong>20px</strong>
+      </div>
+    </div>
+
+    <!-- 3. EM Demo -->
+    <div class="demo-card">
+      <h3>3. Parent/Element Relative Unit: em</h3>
+      <div class="parent-em">
+        <strong>Parent Box (font-size: 20px)</strong>
+        <div class="child-em">
+          <strong>Child Box (font-size: 0.8em)</strong><br>
+          Calculated from parent font size (20px):<br>
+          • Child Font Size = 0.8 × 20px = <strong>16px</strong><br>
+          • Child Top Margin (0.5em) = 0.5 × 16px = <strong>8px</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Percentage Demo -->
+    <div class="demo-card">
+      <h3>4. Container Relative Unit: %</h3>
+      <div class="parent-percent">
+        <strong>Parent Container (100% width)</strong>
+        <div class="child-percent">
+          <strong>Child Box (width: 60%)</strong><br>
+          Takes up exactly 60% of its parent's width.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Viewport Unit Demo -->
+    <div class="demo-card">
+      <h3>5. Screen Relative Unit: vw (Viewport Width)</h3>
+      <div class="box-vw">
+        <strong>Width: 50vw</strong><br>
+        Takes up exactly 50% of the browser screen width. Try resizing your browser window to see this box shrink and grow automatically!
+      </div>
+    </div>
+
+    <!-- 6. Line Height Unit Demo -->
+    <div class="demo-card">
+      <h3>6. Line Height Relative Unit: lh</h3>
+      <div class="box-lh">
+        Text line-height is set to 35px.<br>
+        <span class="lh-indicator">Height: 1lh</span> ← This badge height is set to <code>1lh</code>, making it automatically <strong>35px</strong> tall to match the line height!
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
